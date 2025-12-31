@@ -2,68 +2,59 @@
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+Temas puntuales
+Esta sección tiene por objetivo reforzar el conocimiento de los hooks tradicionales y especializarlos en los "custom hooks"
+Puntualmente veremos:
+  o  useState
+  o  useRef
+  o  useEffect
+  o  Custom Hooks como:
+  o  useCounter
+  o  usePokemon
+  o  useTrafficLight
+Conectar múltiples custom hooks entre sí
+Y mucho más..
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Proyecto React hooksApp
+1.- npm create vite
+    o  Project name:
+    |  04_hooks-app
+    o  Select a framework:
+    |  React
+    o  Select a variant:
+    |  TypeScript + SWC
+    
+    cd 04_hooks-app
+    npm install
+    npm run dev
+2.- eliminar :
+     - assets
+     - App.css
+     - App.tsx
+    quitar contenido de
+     - index.css
+    quitar las llamadas que ya no existen
+     - main.tsx
+    crear en  src
+     - HookApp.tsx
+3.- Los estilos se haran con
+      o  https://tailwindcss.com/
+         click en [Get started] y asegurate que este seleccionado [Using Vite]
+      o  instalar tailwindcss
+         C:\Projects\Git\React\04_hooks-app>npm install tailwindcss @tailwindcss/vite
+         click en [Get started] y asegurate que este seleccionado [Using Vite]
+      o  en el archivo vite.config.ts agregar las lineas (esta)
+            import { defineConfig } from 'vite'
+            import tailwindcss from '@tailwindcss/vite'   (esta)
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      ...tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      ...tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      ...tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+            export default defineConfig({
+            plugins: [
+                tailwindcss(),      (esta)
+            ],
+            })     
+      o  en el index.css agregar
+          @import "tailwindcss";
+        y agregas esta linea que contiene muchos stilos de Tailwind que dio el instructor
+        .bg-gradient {
+        @apply bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800 min-h-screen flex items-center justify-center p-4 text-white;
+        }          
